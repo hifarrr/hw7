@@ -55,7 +55,7 @@ function draw() {
     } else {
       fill(255);
     }
-    ellipse((i+0.3) * width/playing.length, height/4, height/25);
+    ellipse((i+0.3) * width/playing.length, height/4, height/25,height/25);
   }
   drops.forEach(processDrop);
   drops = drops.filter(isVisible);
@@ -63,11 +63,13 @@ function draw() {
 
 function processDrop(drop) {
   drop.y += 5;
-  drop.opacity -=15;
+  drop.opacity -=6;
 	r+=1;
   stroke(0);
   fill(255, drop.opacity);
-  ellipse(drop.x, drop.y, height/25-r);
+  if (height/25-r>0){
+	print("ellipse size",height/25-r);  
+  	ellipse(drop.x, drop.y, height/25-r,height/25-r);
 }
 
 function isVisible(drop) {
